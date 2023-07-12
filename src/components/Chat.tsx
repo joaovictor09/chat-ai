@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 
 import { useChat } from 'ai/react'
 import { ScrollArea } from "./ui/scroll-area";
+import { Message } from "./Message";
 
 export function Chat(){
   const {messages, input, handleInputChange, handleSubmit, isLoading, stop} = useChat()
@@ -21,26 +22,11 @@ export function Chat(){
           <ScrollArea className="h-[600px] w-full pr-4">
             { messages.map(message => {
               return (
-                <div key={message.id} className="flex gap-3 text-slate-600 text-sm mb-4">
-                  {message.role === 'user' && (
-                    <Avatar>
-                      <AvatarFallback>JV</AvatarFallback>
-                      <AvatarImage src="https://github.com/joaovictor09.png"/>
-                    </Avatar>
-                  )}
-
-                  {message.role === 'assistant' && (
-                    <Avatar>
-                      <AvatarFallback>RS</AvatarFallback>
-                      <AvatarImage src="https://github.com/rocketseat.png"/>
-                    </Avatar>
-                  )}
-
-                  <p className="leading-relaxed">
-                    <span className="block font-bold text-slate-700">{message.role === 'user' ? 'Usuário' : 'AI'}:</span>
-                    {message.content}
-                  </p>
-                </div>
+                <Message 
+                  key={message.id}
+                  content={message.content}
+                  role={message.role}
+                />
               )
             }) }
           </ScrollArea>
