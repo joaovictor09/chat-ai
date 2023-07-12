@@ -9,7 +9,7 @@ import { useChat } from 'ai/react'
 import { ScrollArea } from "./ui/scroll-area";
 
 export function Chat(){
-  const {messages, input, handleInputChange, handleSubmit} = useChat()
+  const {messages, input, handleInputChange, handleSubmit, isLoading, stop} = useChat()
   
   return (
     <Card className="w-[440px]">
@@ -46,9 +46,25 @@ export function Chat(){
           </ScrollArea>
         </CardContent>
         <CardFooter >
-          <form className="flex w-full gap-2" onSubmit={handleSubmit}>
-            <Input placeholder="How can i help you?" value={input} onChange={handleInputChange} />
-            <Button type="submit">Send</Button>
+          <form className="flex w-full gap-2 relative" onSubmit={handleSubmit}>
+            <Button 
+              className={`absolute right-1/2 translate-x-1/2 -top-2 -translate-y-full ${!isLoading && 'hidden'}`}
+              onClick={stop}
+            >
+              Stop
+            </Button>
+
+            <Input 
+              placeholder="How can i help you?"
+              value={input} onChange={handleInputChange} 
+            />
+            
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+            >
+              Send
+            </Button>
           </form>
         </CardFooter>
       </Card>
