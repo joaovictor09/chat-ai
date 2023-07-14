@@ -51,7 +51,7 @@ export function ChatInput({
   }
 
   return (
-    <div className="w-full flex justify-center absolute pb-5 bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-b from-transparent to-slate-400">
+    <div className="w-full flex justify-center absolute px-5 lg:px-0 pb-5 bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-b from-transparent to-slate-400">
       <form
         className="relative flex w-full gap-2 max-w-3xl"
         onSubmit={handleSubmit}
