@@ -50,15 +50,11 @@ export function ChatInput({
     handleInputChange(event)
   }
 
-  function handleFormSubmit(e: FormEvent<HTMLFormElement>) {
-    handleSubmit(e)
-  }
-
   return (
     <div className="w-full flex justify-center absolute pb-5 bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-b from-transparent to-slate-400">
       <form
         className="relative flex w-full gap-2 max-w-3xl"
-        onSubmit={handleFormSubmit}
+        onSubmit={handleSubmit}
       >
         <Button
           className={`absolute right-1/2 translate-x-1/2 -top-2 -translate-y-full ${
@@ -68,13 +64,6 @@ export function ChatInput({
         >
           Stop
         </Button>
-
-        {/* <Textarea
-          placeholder="How can i help you?"
-          value={input}
-          className="bg-white resize-none"
-          onChange={handleInputChange}
-        /> */}
 
         <Textarea
           className="flex-grow outline-none resize-none mr-2 bg-white"
